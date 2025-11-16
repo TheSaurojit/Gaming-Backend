@@ -1,16 +1,18 @@
 import express, { Request, Response } from "express";
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = 3000;
+// const PORT = process.env.PORT;
 
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/:user", (req: Request, res: Response) => {
+  const user = req.params.user || "Guest";
   console.log(process.env.PORT);
   
-return  res.send("Hello from Express + TS!!!");
+return  res.send(`Hello Iam ${user} from Express + TS!!! Subhro Branch`);
 });
 
 app.listen(PORT, () => {
